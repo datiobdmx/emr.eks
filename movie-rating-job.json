@@ -1,0 +1,25 @@
+{
+    "name": "movie-rating-job",
+    "virtualClusterId": "uitdrpyhy5vv16xn57lo8qtli",
+    "executionRoleArn": "arn:aws:iam::782286735041:role/datiotalks-emr",
+    "releaseLabel": "emr-6.2.0-latest",
+    "jobDriver": {
+        "sparkSubmitJobDriver": {
+            "entryPoint": "s3://datiotalks/application/entrypoint.py",
+            "entryPointArguments": [
+                "--movie_catalog", "s3://datiotalks/data/movie_catalog.parquet",
+                "--movie_ratings", "s3://datiotalks/data/movie_ratings.parquet",
+                "--user_catalog", "s3://datiotalks/data/user_catalog.parquet",
+                "--output_uri", "s3://datiotalks/output/movie_ratings"
+            ],
+            "sparkSubmitParameters": "--conf spark.executor.instances=2 --conf spark.executor.memory=2G --conf spark.executor.cores=1 --conf spark.driver.cores=1 --conf spark.driver.memory=2G"
+        }
+    },
+    "configurationOverrides": {
+        "monitoringConfiguration": {
+            "s3MonitoringConfiguration": {
+                "logUri": "s3://datiotalks/logs/"
+            }
+        }
+    }
+}

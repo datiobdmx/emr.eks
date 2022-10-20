@@ -1,0 +1,15 @@
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: datiotalks-cluster
+  region: us-east-2
+  tags:
+    owner: datiotalks
+
+managedNodeGroups:
+  - name: nodegroup
+    instanceType: m5.xlarge
+    desiredCapacity: 2
+    

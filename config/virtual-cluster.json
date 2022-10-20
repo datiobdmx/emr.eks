@@ -1,0 +1,9 @@
+{
+    "id": "datiotalks-cluster",
+    "type": "EKS",
+    "info": {
+        "eksInfo": {
+        "namespace":"spark"
+        }
+    }
+}
